@@ -26,6 +26,7 @@ public class Auction
     public string Description { get; set; }
     public int UserId { get; set; }
 
+    public string? ImgURL {get; set;}
     public User? Creator { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
