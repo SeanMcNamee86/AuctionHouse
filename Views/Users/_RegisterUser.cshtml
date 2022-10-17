@@ -1,0 +1,43 @@
+@model User
+
+@{
+    string? themeOpposite = @Context.Session.GetString("ThemeOpposite").ToLower();
+    string? theme = @Context.Session.GetString("Theme").ToLower();
+}
+
+<form asp-controller="Users" asp-action="Register" method="POST"
+    class="form form-signup shadow-lg-black rounded form-control bg-@theme text-@themeOpposite border-0">
+    <fieldset class="text-@themeOpposite">
+        <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+        <div class="input-block">
+            <span asp-validation-for="FirstName" class="text-danger font-weight-bold"></span>
+            <input asp-for="FirstName"
+                class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite"
+                placeholder="First Name" />
+        </div>
+        <div class="input-block">
+            <span asp-validation-for="LastName" class="text-danger font-weight-bold"></span>
+            <input asp-for="LastName"
+                class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite"
+                placeholder="Last Name" />
+        </div>
+        <div class="input-block">
+            <span asp-validation-for="Email" class="text-danger font-weight-bold"></span>
+            <input asp-for="Email" class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite"
+                placeholder="Email" />
+        </div>
+        <div class="input-block">
+            <span asp-validation-for="Password" class="text-danger font-weight-bold"></span>
+            <input asp-for="Password"
+                class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite"
+                placeholder="Password" />
+        </div>
+        <div class="input-block">
+            <span asp-validation-for="ConfirmPW" class="text-danger font-weight-bold"></span>
+            <input asp-for="ConfirmPW"
+                class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite"
+                placeholder="Confirm" />
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-outline-primary btn-signup">Register</button>
+</form>

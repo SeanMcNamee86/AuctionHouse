@@ -1,0 +1,27 @@
+@model LoginUser
+
+@{
+    string? themeOpposite = @Context.Session.GetString("ThemeOpposite").ToLower();
+    string? theme = @Context.Session.GetString("Theme").ToLower();
+
+}
+
+<form asp-controller="Users" asp-action="Login" method="POST"
+    class="form form-login shadow-lg-black rounded form-control bg-@theme text-@themeOpposite border-0">
+    <fieldset>
+        <legend>Please, enter your email and password for login.</legend>
+        <div class="input-block">
+            <span asp-validation-for="LoginEmail" class="text-danger font-weight-bold"></span>
+            <input asp-for="LoginEmail" id="login-email"
+                class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite"
+                placeholder="Email" />
+        </div>
+        <div class="input-block">
+            <span asp-validation-for="LoginPassword" class="text-danger font-weight-bold"></span>
+            <input asp-for="LoginPassword" id="long-password"
+                class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite"
+                placeholder="Password" />
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-outline-success btn-login">Login</button>
+</form>

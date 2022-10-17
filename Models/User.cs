@@ -5,32 +5,33 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace AuctionHouse.Models;
 public class User
 {
-    
+
     [Key] // Primary Key
     public int UserId { get; set; }
 
-    [Required(ErrorMessage = "is required")]
-    [Display(Name = "First Name")]
+    [Required(ErrorMessage = "First Name is required")]
     [MinLength(2, ErrorMessage = "must be more than 2 characters.")]
     public string FirstName { get; set; }
-    [Required(ErrorMessage = "is required")]
-    [Display(Name = "Last Name")]
+
+    [Required(ErrorMessage = "Last Name is required")]
     [MinLength(2, ErrorMessage = "must be more than 2 characters.")]
     public string LastName { get; set; }
-    [EmailAddress]
-    [Display(Name = "Email Address")]
-    public string Email {get; set;}    [Required(ErrorMessage = "is required")]
+
+    [Required(ErrorMessage = "Email is required")]
+    [RegularExpression(@"^([\w.-]+)@([\w-]+)((.(\w){2,3})+)$", ErrorMessage = "Must be a valid Email")]
+    public string Email { get; set; }
+
+    [Required(ErrorMessage = "Password is required")]
     [DataType(DataType.Password)]
     [MinLength(8, ErrorMessage = "must be at least 8 characters")]
-    [Display(Name = "Password")]
     public string Password { get; set; }
 
     [NotMapped]
     [Required(ErrorMessage = "Password fields must match")]
-    [Display(Name = "Confirm Password")]
     [DataType(DataType.Password)]
     [Compare("Password")]
     public string ConfirmPW { get; set; }
+
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
     public List<Auction> CreatedAuctions { get; set; } = new List<Auction>();

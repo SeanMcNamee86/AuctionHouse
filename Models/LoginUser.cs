@@ -3,13 +3,14 @@ using System.ComponentModel.DataAnnotations;
 namespace AuctionHouse.Models;
 public class LoginUser
 {
-    
+
     [Key] // Primary Key
 
-    [Required(ErrorMessage = "is required")]
-    [Display(Name = "Email Address")]
+    [Required(ErrorMessage = "Email is required")]
     [EmailAddress]
     public string LoginEmail { get; set; }
+
+    [Required(ErrorMessage = "Password is required")]
     [DataType(DataType.Password)]
     public string LoginPassword { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;

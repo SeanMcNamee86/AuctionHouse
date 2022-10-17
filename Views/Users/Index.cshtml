@@ -1,0 +1,27 @@
+@{
+    string? themeOpposite = @Context.Session.GetString("ThemeOpposite").ToLower();
+    string? theme = @Context.Session.GetString("Theme").ToLower();
+
+}
+<section class="forms-section bg-@theme">
+    <div class="text-@themeOpposite">
+    </div>
+    <div class="forms">
+
+        <div class="form-wrapper is-active">
+            <button type="button" class="switcher switcher-login text-@themeOpposite">
+                Login
+                <span class="underline"></span>
+            </button>
+            <partial class="form form-login" name="_LoginUser"></partial>
+        </div>
+
+        <div class="form-wrapper">
+            <button type="button" class="switcher switcher-signup text-@themeOpposite">
+                Register
+                <span class="underline"></span>
+            </button>
+            <partial class="form form-signup" name="_RegisterUser"></partial>
+        </div>
+    </div>
+</section>

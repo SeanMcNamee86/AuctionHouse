@@ -2,3 +2,14 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+// Login and Registration
+
+const switchers = [...document.querySelectorAll('.switcher')]
+
+switchers.forEach(item => {
+    item.addEventListener('click', function () {
+        switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+        this.parentElement.classList.add('is-active')
+    })
+})
