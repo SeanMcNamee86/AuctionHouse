@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D99swzWkXoPp3RL0Bh8J5pM/GuzE/m5wWsSoUGLSxRoqn/kbgNZFi0o89MN/aExA//hQXm0M+VfXR/H5PV+hOw==",
+  "dgSpecHash": "0RnskINKwTjiZsE07WeIAd3cfeX6542LXNg/r/0D3fh65v9Exj3Fh1QpoQ6CGX9uBHY87bc4TZlLlHUbQKcQdg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\coole\\Desktop\\Dojo_Folder\\C-sharp\\AuctionHouse\\AuctionHouse.csproj",
+  "projectFilePath": "C:\\Users\\coole\\Documents\\GitHub\\AuctionHouse\\AuctionHouse.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\coole\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\coole\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.3\\microsoft.entityframeworkcore.6.0.3.nupkg.sha512",

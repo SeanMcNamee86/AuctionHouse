@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace AuctionHouse.Models;
 public class Auction
 {
-    
+
     [Key] // Primary Key
     public int AuctionId { get; set; }
 
@@ -12,7 +12,7 @@ public class Auction
     [MinLength(2, ErrorMessage = "must be more than 2 characters.")]
     public string Name { get; set; }
     [Display(Name = "Goal")]
-    [Range(0, Int32.MaxValue, ErrorMessage ="Goal must be a positive value!")]
+    [Range(0, Int32.MaxValue, ErrorMessage = "Goal must be a positive value!")]
     public int BuyNow { get; set; }
     [Display(Name = "Minimum Bid amount")]
     public int MinBid { get; set; } = 0;
@@ -26,7 +26,7 @@ public class Auction
     public string Description { get; set; }
     public int UserId { get; set; }
 
-    public string? ImgURL {get; set;}
+    //public string? ImgURL {get; set;}
     public User? Creator { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
@@ -34,6 +34,10 @@ public class Auction
     public List<Bid> Bids { get; set; } = new List<Bid>();
     public List<AuctionCategory> AuctionCategories { get; set; } = new List<AuctionCategory>();
 
+    public string StringDate()
+    {
+        return (this.EndDate).ToString("MMM dd, yyyy HH:mm:ss");
+    } 
 
     public void RetireAuction()
     {
