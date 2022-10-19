@@ -28,7 +28,7 @@ public class UsersController : Controller
         db = context;
     }
 
-    [HttpGet("/")]
+    [HttpGet("/users")]
     public IActionResult Index()
     {
         if (HttpContext.Session.GetString("Theme") == null)
@@ -38,7 +38,7 @@ public class UsersController : Controller
         }
         if (loggedIn)
         {
-            return RedirectToAction("All", "Projects");
+            return RedirectToAction("Index", "Home");
         }
         return View("Index");
     }
@@ -66,7 +66,7 @@ public class UsersController : Controller
         db.SaveChanges();
 
         HttpContext.Session.SetInt32("UUID", newUser.UserId);
-        return RedirectToAction("All", "Projects");
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpPost("/login")]
@@ -94,7 +94,7 @@ public class UsersController : Controller
             return Index();
         }
         HttpContext.Session.SetInt32("UUID", dbUser.UserId);
-        return RedirectToAction("All", "Projects");
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpPost("/logout")]

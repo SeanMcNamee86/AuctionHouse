@@ -2,7 +2,136 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+    string? themeOpposite = @Context.Session.GetString("ThemeOpposite").ToLower();
+    string? theme = @Context.Session.GetString("Theme").ToLower();
+}
+
+<div class="d-flex flex-column justify-content-center align-items-center text-@themeOpposite">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div>
+            <h1 class="text-@themeOpposite">Search Bar</h1>
+        </div>
+        <div>
+            <form asp-controller="Auction" asp-action="All" method="GET" class="shadow-lg-black rounded p-1 form-control bg-@theme text-@themeOpposite border-0 d-flex
+                justify-content-between align-items-center">
+                <div class="p-3">
+                    <input type="text"
+                        class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite"
+                        placeholder="What are you looking for?">
+                </div>
+                <div>
+                    <select class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite">
+                        <option value="" selected disabled hidden>Select a Category</option>
+                        @foreach (Category c in ViewBag.AllCategories)
+                        {
+                            <option value=@c.CategoryId>@c.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class=" p-3">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <h1 class="text-@themeOpposite">Featured</h1>
+    </div>
+
+    <div class="container text-center my-3">
+        <h1 class="font-weight-light">Category 1</h1>
+        <div class="row mx-auto my-auto justify-content-center">
+            <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="col-md-3">
+                            <div class="card-img">
+                                <img src="https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-clubs-master/default/dw10cf8124/548C/548C_01.jpg?sw=300&sh=300&sm=fit&sfrm=png"
+                                    class="homeImg">
+                            </div>
+                            <div class="text-@themeOpposite m-2">$149.99</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-3">
+                            <div class="card-img">
+                                <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
+                                    class="homeImg">
+                            </div>
+                            <div class="text-@themeOpposite m-2">$129.99</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="col-md-3">
+                            <div class="card-img">
+                                <img src="https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-clubs-master/default/dw10cf8124/548C/548C_01.jpg?sw=300&sh=300&sm=fit&sfrm=png"
+                                    class="homeImg">
+                            </div>
+                            <div class="text-@themeOpposite m-2">$149.99</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-3">
+                            <div class="card-img">
+                                <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
+                                    class="homeImg">
+                            </div>
+                            <div class="text-@themeOpposite m-2">$129.99</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="col-md-3">
+                            <div class="card-img">
+                                <img src="https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-clubs-master/default/dw10cf8124/548C/548C_01.jpg?sw=300&sh=300&sm=fit&sfrm=png"
+                                    class="homeImg">
+                            </div>
+                            <div class="text-@themeOpposite m-2">$149.99</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-3">
+                            <div class="card-img">
+                                <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
+                                    class="homeImg">
+                            </div>
+                            <div class="text-@themeOpposite m-2">$129.99</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="col-md-3">
+                            <div class="card-img">
+                                <img src="https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-clubs-master/default/dw10cf8124/548C/548C_01.jpg?sw=300&sh=300&sm=fit&sfrm=png"
+                                    class="homeImg">
+                            </div>
+                            <div class="text-@themeOpposite m-2">$149.99</div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col-md-3">
+                            <div class="card-img">
+                                <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
+                                    class="homeImg">
+                            </div>
+                            <div class="text-@themeOpposite m-2">$129.99</div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1 class="text-@themeOpposite">Category 2</h1>
+    </div>
+    <div>
+        <h1 class="text-@themeOpposite">Category 3</h1>
+    </div>
 </div>

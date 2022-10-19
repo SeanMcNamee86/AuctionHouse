@@ -28,6 +28,19 @@ public class HomeController : Controller
         db = context;
     }
 
+    [HttpGet("/")]
+    public IActionResult Index()
+    {
+        if (HttpContext.Session.GetString("Theme") == null)
+        {
+            HttpContext.Session.SetString("Theme", "light");
+            HttpContext.Session.SetString("ThemeOpposite", "dark");
+        }
+        ViewBag.AllCategories = db.Categories.ToList();
+
+        return View("Index");
+    }
+
     [HttpPost("/dark")]
     public IActionResult SetDark()
     {
