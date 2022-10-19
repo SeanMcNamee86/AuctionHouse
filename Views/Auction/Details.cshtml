@@ -1,0 +1,79 @@
+@model Auction
+
+@{
+    string? themeOpposite = @Context.Session.GetString("ThemeOpposite").ToLower();
+    string? theme = @Context.Session.GetString("Theme").ToLower();
+
+}
+
+<div class="text-@themeOpposite d-flex align-items-center">
+    <div class="p-5">
+        <img class="detailsImg"
+            src="https://cdn.shopify.com/s/files/1/0634/7833/3657/products/f835dfb3bf5e41a4b29acd2f310bf0849a5cbe3d_1500x.jpg?v=1666027524">
+    </div>
+    <div class="card bg-@theme shadow-lg-black p-5">
+        <div class="card-body">
+            <div class="card-title">
+                <h1>@Model.Name</h1>
+            </div>
+            <div class="card-subtitle mb-2 text-muted">
+                <h6>@Model.Description</h6>
+            </div>
+            <div class="border-bottom pb-4">
+                <a href="">
+                    <h6>Seller Name</h6>
+                </a>
+            </div>
+            <div class="card-text pt-4">
+                <h6>Time Left: <span id="demo"></span></h6>
+            </div>
+            <div class="border-bottom card-text pb-4">
+                <h6>End Time: @Model.EndDate</h6>
+            </div>
+            <div class="card-text d-flex justify-content-between align-items-center text-center pt-4">
+                <h4 class="col-6">Current Bid: $@Model.HighBid</h4>
+                <h4 class="col-6">Buy it Now: $@Model.BuyNow</h4>
+            </div>
+            <div class="pt-3">
+                <form asp-controller="Auction" asp-action="Bid" asp-route-auctionId="@Model.AuctionId"
+                    class="form-control bg-@theme text-@themeOpposite border-0 text-center">
+                    <div class="pb-1">
+                        <input class="form-control text-center bg-secondary text-@themeOpposite border-@themeOpposite"
+                            type="text" name="amount" placeholder="Bid Amount">
+                    </div>
+                    <div class="text-muted pb-3">
+                        <h6>Minimum bid: $@(Model.HighBid + (Model.HighBid * .025))</h6>
+                    </div>
+                    <button class="btn btn-lg btn-success w-50">Place Bid</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var countDownDate = new Date("@Model.StringDate()").getTime();
+
+
+    var x = setInterval(function () {
+
+
+        var now = new Date().getTime();
+
+
+        var distance = countDownDate - now;
+
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        if (distance < 0) { clearInterval(x); document.getElementById("demo").innerHTML = "THE AUCTION HAS EXPIRED"; }
+    }, 1000);
+</script>

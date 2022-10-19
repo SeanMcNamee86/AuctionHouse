@@ -347,3 +347,8 @@ body {
 .carousel-control-prev {
   filter: invert(100%);
 }
+
+.detailsImg {
+  height: 500px;
+  box-shadow: 0 1rem 3rem black !important
+}

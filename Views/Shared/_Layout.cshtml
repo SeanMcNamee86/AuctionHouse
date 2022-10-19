@@ -30,30 +30,43 @@
                             <a class="nav-link text-@themeOpposite" asp-area="" asp-controller="Home"
                                 asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-@themeOpposite" asp-area="" asp-controller="Home"
-                                asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <form asp-controller="Home" asp-action="SetLight" method="POST">
-                                <button class="btn btn-link">
-                                    Light
-                                </button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form asp-controller="Home" asp-action="SetDark" method="POST">
-                                <button class="btn btn-link">
-                                    Dark
-                                </button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-@themeOpposite" asp-area="" asp-controller="Users"
-                                asp-action="Index">
-                                Login
-                            </a>
-                        </li>
+                        @if (Context.Session.GetString("Theme") == "dark")
+                        {
+                            <li class="nav-item">
+                                <form asp-controller="Home" asp-action="SetLight" method="POST">
+                                    <button class="btn btn-sm btn-light">
+                                        Light Mode
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <form asp-controller="Home" asp-action="SetDark" method="POST">
+                                    <button class="btn btn-sm btn-dark">
+                                        Dark Mode
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        @if (Context.Session.GetInt32("UUID") != null)
+                        {
+                            <li class="nav-item">
+                                <form asp-controller="Users" asp-action="Logout" method="POST">
+                                    <button class="btn btn-sm btn-danger">
+                                        Logout
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-sm btn-primary" asp-area="" asp-controller="Users"
+                                asp-action="Index">Login</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
