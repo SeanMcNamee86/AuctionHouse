@@ -1,32 +1,57 @@
 @model List<Auction>
 
+@{
+    string? themeOpposite = @Context.Session.GetString("ThemeOpposite").ToLower();
+    string? theme = @Context.Session.GetString("Theme").ToLower();
+
+}
+
+<h1>Results for:</h1>
+
 @foreach (Auction a in Model)
 {
-  <p>@a.Name</p>
-  <p>@a.StringDate(), Jan 5, 2024 15:37:25</p>
-  <p id=demo>Timer here</p <script>
 
-var countDownDate = new Date("@a.StringDate()").getTime();
+    <div class="card bg-@theme shadow-lg-black p-5 d-flex flex-row align-items-center text-@themeOpposite mb-3">
+    <div>
+        <a asp-controller="Auction" asp-action="GetOneAuction" asp-route-oneAuctionId="@a.AuctionId">
+            <img class="homeImg border border-@themeOpposite border-1"
+                src="
+        https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
+                alt="Auction Img">
+        </a>
 
+    </div>
 
-var x = setInterval(function () {
+    <div class="card-body">
+        <div class="card-title">
+            <h2>
+                <a asp-controller="Auction" asp-action="GetOneAuction" asp-route-oneauctionId="@a.AuctionId"
+                    class="text-@themeOpposite text-decoration-none">
+                    @a.Name
+                </a>
+            </h2>
+        </div>
+        <div class="border-bottom">
+            <a href="">
+                <h6>
+                    <a asp-controller="Users" asp-action="GetOneUser" asp-route-oneuserId="@a.UserId"
+                        class="text-@themeOpposite text-decoration-none">
+                        @a.Creator.FirstName @a.Creator.LastName
 
-
-var now = new Date().getTime();
-
-
-var distance = countDownDate - now;
-
-
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-
-document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-+ minutes + "m " + seconds + "s ";
-
-if (distance < 0) { clearInterval(x); document.getElementById("demo").innerHTML="THE AUCTION HAS EXPIRED" ; } }, 1000);
-  </script>
+                    </a>
+                </h6>
+            </a>
+        </div>
+        <div class="card-text border-bottom">
+            <h6>Bids: @a.Bids.Count</h6>
+            <h6>Current Bid: $@a.HighBid</h6>
+            <h6>Buy it Now: $@a.BuyNow</h6>
+        </div>
+        <div>
+            <h6>Time Left: <span>@((a.EndDate - DateTime.Now)
+                    .ToString(@"d\ \d\a\y\(\s\)\ h\ \h\o\u\r\(\s\)\ mm\ \m\i\n\u\t\e\(\s\)")) Remaining</span></h6>
+            <h6>End Time: @a.StringDate()</h6>
+        </div>
+    </div>
+</div>
 }

@@ -43,6 +43,8 @@ public class UsersController : Controller
         return View("Index");
     }
 
+
+
     [HttpPost("/register")]
     public IActionResult Register(User newUser)
     {
