@@ -13,12 +13,12 @@ public class Auction
     public string Name { get; set; }
     [Display(Name = "Buy it now price")]
     [Range(0, Int32.MaxValue, ErrorMessage = " must be a positive value!")]
-    public int BuyNow { get; set; }
+    public float BuyNow { get; set; }
     [Display(Name = "Minimum Bid amount")]
-    public int MinBid { get; set; } = 0;
+    public float MinBid { get; set; } = 0;
 
     [Display(Name = "Current highest bid")]
-    public int HighBid { get; set; } = 0;
+    public float HighBid { get; set; } = 0;
 
     [Display(Name = "End Date")]
     public DateTime EndDate { get; set; }

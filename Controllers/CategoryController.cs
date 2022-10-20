@@ -29,9 +29,9 @@ public class CategoryController : Controller
     [HttpGet("/categories/new")]
     public IActionResult New()
     {
-        if (!loggedIn)
+        if (!loggedIn || HttpContext.Session.GetString("Admin") != "true")
         {
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "Users");
         }
         return View("New");
     }
@@ -41,7 +41,7 @@ public class CategoryController : Controller
     {
         if (!loggedIn || uid == null)
         {
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "Users");
         }
 
         if (!ModelState.IsValid )
@@ -65,9 +65,9 @@ public class CategoryController : Controller
     [HttpGet("/categories")]
     public IActionResult All()
     {
-        if (!loggedIn)
+        if (!loggedIn || HttpContext.Session.GetString("Admin") != "true")
         {
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "Users");
         }
 
 
@@ -78,30 +78,28 @@ public class CategoryController : Controller
     }
 
     [HttpGet("/categories/{oneCategoryId}")]
-    public IActionResult GetOneCategory(int oneCategoryId)
+    public IActionResult GetAuctionsByCategory(int oneCategoryId)
     {
-        if (!loggedIn)
+        if (!loggedIn || HttpContext.Session.GetString("Admin") != "true")
         {
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "Users");
         }
-        Category? category = db.Categories
-            .FirstOrDefault(v => v.CategoryId == oneCategoryId);
-       
-
-        if (category == null)
+        Category? auctionsByCat = db.Categories.Include(c => c.CategoryAuctions).ThenInclude(ca => ca.Auction).FirstOrDefault(c => c.CategoryId == oneCategoryId);
+        
+        if (auctionsByCat == null)
         {
             return RedirectToAction("All");
         }
 
-        return View("Details", category);
+        return View("AllAuctions", auctionsByCat);
     }
 
     [HttpPost("/categories/{deletedCategoryId}/delete")]
     public IActionResult DeleteCategory(int deletedCategoryId)
     {
-        if (!loggedIn && HttpContext.Session.GetString("Admin") != "true")
+        if (!loggedIn || HttpContext.Session.GetString("Admin") != "true")
         {
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "Users");
         }
         Category? category = db.Categories.FirstOrDefault(p => p.CategoryId == deletedCategoryId);
 
@@ -118,7 +116,7 @@ public class CategoryController : Controller
     {
         if (!loggedIn)
         {
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "Users");
         }
         Category? category = db.Categories.FirstOrDefault(p => p.CategoryId == categoryId);
 
@@ -135,7 +133,7 @@ public class CategoryController : Controller
     {
         if (!loggedIn)
         {
-            return RedirectToAction("Index", "User");
+            return RedirectToAction("Index", "Users");
         }
         if (ModelState.IsValid == false)
         {

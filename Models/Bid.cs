@@ -10,7 +10,7 @@ public class Bid
     public int BidId { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
-    public int Amount {get; set;}
+    public float Amount {get; set;}
     public bool WinningBid {get; set; } = false;
     public int UserId { get; set; }
     public User? User { get; set; }
