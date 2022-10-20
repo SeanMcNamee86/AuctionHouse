@@ -68,9 +68,9 @@ public class AuctionController : Controller
         {
             CategoryId = catId,
             AuctionId = newAuction.AuctionId
-        }
+        };
         db.AuctionCategories.Add(newAC);
-        db,SaveChanges();
+        db.SaveChanges();
         Console.WriteLine(newAuction.AuctionId);
 
         return RedirectToAction("All");
