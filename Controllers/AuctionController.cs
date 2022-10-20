@@ -38,7 +38,7 @@ public class AuctionController : Controller
     }
 
     [HttpPost("/auctions/create")]
-    public IActionResult Create(Auction newAuction)
+    public IActionResult Create(Auction newAuction, int catId)
     {
         if (!loggedIn || uid == null)
         {
@@ -50,6 +50,7 @@ public class AuctionController : Controller
         {
             ModelState.AddModelError("EndDate", "must be in the future");
         }
+        
         if (!ModelState.IsValid)
         {
             return New();
@@ -63,6 +64,13 @@ public class AuctionController : Controller
         db.Auctions.Add(newAuction);
 
         db.SaveChanges();
+        AuctionCategory newAC = new AuctionCategory()
+        {
+            CategoryId = catId,
+            AuctionId = newAuction.AuctionId
+        }
+        db.AuctionCategories.Add(newAC);
+        db,SaveChanges();
         Console.WriteLine(newAuction.AuctionId);
 
         return RedirectToAction("All");
