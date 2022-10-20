@@ -33,6 +33,7 @@ public class AuctionController : Controller
         {
             return RedirectToAction("Index", "Users");
         }
+        ViewBag.AllCategories = db.Categories.ToList();
         return View("New");
     }
 
