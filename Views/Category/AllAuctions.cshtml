@@ -1,0 +1,57 @@
+@model Category
+
+@{
+    string? themeOpposite = @Context.Session.GetString("ThemeOpposite").ToLower();
+    string? theme = @Context.Session.GetString("Theme").ToLower();
+
+}
+
+<h1>Results for:</h1>
+
+@foreach (AuctionCategory ac in Model.CategoryAuctions)
+{
+
+    <div class="card bg-@theme shadow-lg-black p-5 d-flex flex-row align-items-center text-@themeOpposite mb-3">
+    <div>
+        <a asp-controller="Auction" asp-action="GetOneAuction" asp-route-oneAuctionId="@ac.Auction.AuctionId">
+            <img class="homeImg border border-@themeOpposite border-1"
+                src="
+        https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
+                alt="Auction Img">
+        </a>
+
+    </div>
+
+    <div class="card-body">
+        <div class="card-title">
+            <h2>
+                <a asp-controller="Auction" asp-action="GetOneAuction" asp-route-oneauctionId="@ac.Auction.AuctionId"
+                    class="text-@themeOpposite text-decoration-none">
+                    @ac.Auction.Name
+                </a>
+            </h2>
+        </div>
+        <div class="border-bottom">
+            <a href="">
+                <h6>
+                    <a asp-controller="Users" asp-action="GetOneUser" asp-route-oneuserId="@ac.Auction.UserId"
+                        class="text-@themeOpposite text-decoration-none">
+                        @ac.Auction.Creator.FirstName @ac.Auction.Creator.LastName
+
+                    </a>
+                </h6>
+            </a>
+        </div>
+        <div class="card-text border-bottom">
+            <h6>Bids: @ac.Auction.Bids.Count</h6>
+            <h6>Current Bid: $@ac.Auction.HighBid</h6>
+            <h6>Buy it Now: $@ac.Auction.BuyNow</h6>
+        </div>
+        <div>
+            <h6>Time Left: <span>@((ac.Auction.EndDate - DateTime.Now)
+                    .ToString(@"d\ \d\a\y\(\s\)\ h\ \h\o\u\r\(\s\)\ mm\ \m\i\n\u\t\e\(\s\)")) Remaining</span></h6>
+            <h6>End Time: @ac.Auction.StringDate()</h6>
+        </div>
+    </div>
+</div>
+}

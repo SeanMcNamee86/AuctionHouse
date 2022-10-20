@@ -44,7 +44,7 @@ public class AuctionController : Controller
             return RedirectToAction("Index", "Users");
         }
         newAuction.isFinished = false;
-        newAuction.HighBid = (int)(newAuction.MinBid * 1.025);
+        newAuction.HighBid = (float)(newAuction.MinBid * 1.025);
         if (newAuction.EndDate < DateTime.Now)
         {
             ModelState.AddModelError("EndDate", "must be in the future");
