@@ -57,7 +57,7 @@ public class CategoryController : Controller
         db.SaveChanges();
         Console.WriteLine(newCategory.CategoryId);
 
-        return RedirectToAction("All");
+        return RedirectToAction("New");
 
 
     }
@@ -77,7 +77,7 @@ public class CategoryController : Controller
         return View("All", allCategories);
     }
 
-    [HttpGet("/categories/{oneCategoryId}")]
+    [HttpGet("/categories/search")]
     public IActionResult GetAuctionsByCategory(int oneCategoryId)
     {
         if (!loggedIn || HttpContext.Session.GetString("Admin") != "true")
@@ -88,7 +88,7 @@ public class CategoryController : Controller
         
         if (auctionsByCat == null)
         {
-            return RedirectToAction("All");
+            return View("Auction");
         }
 
         return View("AllAuctions", auctionsByCat);
