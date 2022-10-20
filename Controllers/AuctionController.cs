@@ -43,6 +43,7 @@ public class AuctionController : Controller
         {
             return RedirectToAction("Index", "User");
         }
+        newAuction.isFinished = false;
         if (newAuction.EndDate < DateTime.Now)
         {
             ModelState.AddModelError("EndDate", "must be in the future");
