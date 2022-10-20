@@ -31,7 +31,7 @@ public class AuctionController : Controller
     {
         if (!loggedIn)
         {
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "User");
         }
         return View("New");
     }
@@ -41,7 +41,7 @@ public class AuctionController : Controller
     {
         if (!loggedIn || uid == null)
         {
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "User");
         }
         if (newAuction.EndDate < DateTime.Now)
         {
@@ -70,10 +70,6 @@ public class AuctionController : Controller
     [HttpGet("/auctions")]
     public IActionResult All()
     {
-        if (!loggedIn)
-        {
-            return RedirectToAction("Index", "Users");
-        }
 
 
         List<Auction> allAuctions = db.Auctions
@@ -89,6 +85,7 @@ public class AuctionController : Controller
     [HttpGet("/auctions/{oneAuctionId}")]
     public IActionResult GetOneAuction(int oneAuctionId)
     {
+
         Auction? auction = db.Auctions
             .Include(w => w.Creator)
             .Include(w => w.Bids)
@@ -108,7 +105,7 @@ public class AuctionController : Controller
     {
         if (!loggedIn)
         {
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "User");
         }
         Auction? auction = db.Auctions.FirstOrDefault(p => p.AuctionId == deletedAuctionId);
 
@@ -125,7 +122,7 @@ public class AuctionController : Controller
     {
         if (!loggedIn)
         {
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "User");
         }
         Auction? auction = db.Auctions.FirstOrDefault(p => p.AuctionId == auctionId);
 
@@ -142,7 +139,7 @@ public class AuctionController : Controller
     {
         if (!loggedIn)
         {
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "User");
         }
         if (ModelState.IsValid == false)
         {
@@ -172,7 +169,7 @@ public class AuctionController : Controller
     {
         if (!loggedIn || uid == null)
         {
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "User");
         }
         Auction? dbAuction = db.Auctions.FirstOrDefault(auction => auction.AuctionId == auctionId);
         if (dbAuction != null)

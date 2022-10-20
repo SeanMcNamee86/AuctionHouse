@@ -11,11 +11,9 @@ public class Auction
     [Display(Name = "Name")]
     [MinLength(2, ErrorMessage = "must be more than 2 characters.")]
     public string Name { get; set; }
-
-    [Display(Name = "Goal")]
-    [Range(0, Int32.MaxValue, ErrorMessage = "Goal must be a positive value!")]
+    [Display(Name = "Buy it now price")]
+    [Range(0, Int32.MaxValue, ErrorMessage = " must be a positive value!")]
     public int BuyNow { get; set; }
-
     [Display(Name = "Minimum Bid amount")]
     public int MinBid { get; set; } = 0;
 
@@ -24,12 +22,12 @@ public class Auction
 
     [Display(Name = "End Date")]
     public DateTime EndDate { get; set; }
-
     [MinLength(20, ErrorMessage = "Your Auction Description must be 20 characters")]
     public string Description { get; set; }
     public int UserId { get; set; }
 
-    //public string? ImgURL {get; set;}
+    public string? ImgURL {get; set;}
+    public bool isFinished {get; set;} = false;
     public User? Creator { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
@@ -40,7 +38,7 @@ public class Auction
     public string StringDate()
     {
         return (this.EndDate).ToString("MMM dd, yyyy HH:mm:ss");
-    }
+    } 
 
     public void RetireAuction()
     {

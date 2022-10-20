@@ -31,6 +31,7 @@ public class User
     [DataType(DataType.Password)]
     [Compare("Password")]
     public string ConfirmPW { get; set; }
+    public bool isSuper {get; set;}
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
