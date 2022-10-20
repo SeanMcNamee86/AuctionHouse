@@ -20,8 +20,11 @@
                 <h6>@Model.Description</h6>
             </div>
             <div class="border-bottom pb-4">
-                <a href="">
-                    <h6>Seller Name</h6>
+                <a asp-controller="Users" asp-action="GetOneUser" asp-route-oneuserId="@Model.UserId"
+                    class="text-@themeOpposite text-decoration-none">
+                    <h6>
+                        Sold by: @Model.Creator.FirstName @Model.Creator.LastName
+                    </h6>
                 </a>
             </div>
             <div class="card-text pt-4">

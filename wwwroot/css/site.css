@@ -352,3 +352,7 @@ body {
   height: 500px;
   box-shadow: 0 1rem 3rem black !important
 }
+
+.dashImg {
+  height: 100px;
+}

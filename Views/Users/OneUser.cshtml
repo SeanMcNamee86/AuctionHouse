@@ -1,0 +1,50 @@
+@model List<Auction>
+
+@{
+    string? themeOpposite = @Context.Session.GetString("ThemeOpposite").ToLower();
+    string? theme = @Context.Session.GetString("Theme").ToLower();
+}
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div>
+        <h1>@ViewBag.CreatorInfo.FirstName @ViewBag.CreatorInfo.LastName's Auctions</h1>
+    </div>
+    <div>
+        @foreach (Auction auctions in Model)
+        {
+            <div class="card bg-@theme shadow-lg-black m-3 p-4 d-flex flex-row align-items-center">
+                <div>
+                    <a asp-controller="Auction" asp-action="GetOneAuction" asp-route-oneAuctionId="@auctions.AuctionId">
+                        <img class="dashImg border border-@themeOpposite border-1"
+                        src="
+        https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
+                        alt="Auction Img">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-title border-bottom">
+                        <h3>
+                            <a asp-controller="Auction" asp-action="GetOneAuction"
+                            asp-route-oneauctionId="@auctions.AuctionId"
+                            class="text-@themeOpposite text-decoration-none">
+                                @auctions.Name
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="card-text text-muted">
+                        <h6>
+                            High Bid: $@auctions.HighBid | Bids: @auctions.Bids.Count
+                        </h6>
+                    </div>
+                    <div class="card-text text-muted">
+                        <h6>
+                            Time Left:
+                            <span>
+                                @((auctions.EndDate - DateTime.Now).ToString(@"d\ \d\ h\ \h\ mm\ \m"))
+                            </span>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>

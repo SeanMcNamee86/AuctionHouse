@@ -95,8 +95,58 @@ public class UsersController : Controller
             ModelState.AddModelError("LoginEmail", "Invalid Credentials");
             return Index();
         }
+
+        if (dbUser.isSuper == true)
+        {
+            HttpContext.Session.SetString("Admin", "true");
+        }
+
         HttpContext.Session.SetInt32("UUID", dbUser.UserId);
         return RedirectToAction("Index", "Home");
+    }
+
+    [HttpGet("/users/dashboard")]
+    public IActionResult Dashboard()
+    {
+        if (!loggedIn)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        List<Auction> allAuctions = db.Auctions
+
+            .Include(v => v.Creator)
+            .Include(v => v.Bids)
+            .ThenInclude(b => b.User)
+            .ToList();
+
+        return View("Dashboard", allAuctions);
+    }
+
+    [HttpGet("/users/{oneUserId}")]
+    public IActionResult GetOneUser(int oneUserId)
+    {
+        ViewBag.CreatorInfo = db.Users.FirstOrDefault(u => u.UserId == oneUserId);
+
+        List<Auction> allAuctions = db.Auctions
+
+            .Include(a => a.Creator)
+            .Include(a => a.Bids)
+            .ThenInclude(b => b.User)
+            .Where(u => u.UserId == oneUserId)
+            .ToList();
+
+        if (allAuctions == null)
+        {
+            return RedirectToAction("All");
+        }
+
+        if (HttpContext.Session.GetInt32("UUID") == oneUserId)
+        {
+            return RedirectToAction("Dashboard");
+        }
+        return View("OneUser", allAuctions);
     }
 
     [HttpPost("/logout")]

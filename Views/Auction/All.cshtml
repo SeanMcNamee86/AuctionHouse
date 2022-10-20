@@ -36,7 +36,7 @@
                 <h6>
                     <a asp-controller="Users" asp-action="GetOneUser" asp-route-oneuserId="@a.UserId"
                         class="text-@themeOpposite text-decoration-none">
-                        @a.Creator.FirstName @a.Creator.LastName
+                        Sold by: @a.Creator.FirstName @a.Creator.LastName
 
                     </a>
                 </h6>
@@ -44,12 +44,12 @@
         </div>
         <div class="card-text border-bottom">
             <h6>Bids: @a.Bids.Count</h6>
-            <h6>Current Bid: $@a.HighBid</h6>
+            <h6>Highest Bid: $@a.HighBid</h6>
             <h6>Buy it Now: $@a.BuyNow</h6>
         </div>
         <div>
             <h6>Time Left: <span>@((a.EndDate - DateTime.Now)
-                    .ToString(@"d\ \d\a\y\(\s\)\ h\ \h\o\u\r\(\s\)\ mm\ \m\i\n\u\t\e\(\s\)")) Remaining</span></h6>
+                    .ToString(@"d\ \d\ h\ \h\ mm\ \m"))</span></h6>
             <h6>End Time: @a.StringDate()</h6>
         </div>
     </div>

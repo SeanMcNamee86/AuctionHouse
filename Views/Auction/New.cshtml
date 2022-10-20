@@ -1,0 +1,61 @@
+@model Auction
+
+@{
+    string? themeOpposite = @Context.Session.GetString("ThemeOpposite").ToLower();
+    string? theme = @Context.Session.GetString("Theme").ToLower();
+}
+
+<div class="container w-75 mx-auto">
+    <h2 class="text-center">Start an Auction</h2>
+    <form class="shadow p-3 rounded" asp-controller="Auction" asp-action="Create" method="POST">
+        <div class="mb-3">
+            <span asp-validation-for="Name" class="text-danger font-weight-bold">
+            </span>
+            <input class="form-control" asp-for="Name" placeholder="Name" />
+        </div>
+
+        <div class="mb-3">
+            <span asp-validation-for="Description" class="text-danger font-weight-bold">
+            </span>
+            <textarea class="form-control" asp-for="Description" placeholder="Description"></textarea>
+        </div>
+
+        @* <div>
+            <span asp-validation-for="" class="text-danger font-weight-bold">
+            </span>
+            <select class="form-control text-center bg-@theme text-@themeOpposite border-@themeOpposite">
+            <option value="" selected disabled hidden>Select a Category</option>
+            @foreach (Category c in ViewBag.AllCategories)
+            {
+            <option value=@c.CategoryId>@c.Name</option>
+            }
+            </select>
+            </div> *@
+
+        <div class="mb-3">
+            <span asp-validation-for="ImgURL" class="text-danger font-weight-bold">
+            </span>
+            <input class="form-control" asp-for="ImgURL" placeholder="ImgURL" />
+        </div>
+
+        <div class="mb-3">
+            <span asp-validation-for="BuyNow" class="text-danger font-weight-bold">
+            </span>
+            <input class="form-control" asp-for="BuyNow" placeholder="BuyNow" />
+        </div>
+
+        <div class="mb-3">
+            <span asp-validation-for="MinBid" class="text-danger font-weight-bold">
+            </span>
+            <input class="form-control" asp-for="MinBid" placeholder="MinBid" />
+        </div>
+
+        <div class="mb-3">
+            <span asp-validation-for="EndDate" class="text-danger font-weight-bold">
+            </span>
+            <input class="form-control" asp-for="EndDate" />
+        </div>
+
+        <button class="btn btn-success">Get Started!</button>
+    </form>
+</div>

@@ -31,8 +31,12 @@
                                 asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-@themeOpposite" asp-area="" asp-controller="Dashboard"
-                                asp-action="Index">Dashboard</a>
+                            <a class="nav-link text-@themeOpposite" asp-area="" asp-controller="Users"
+                                asp-action="Dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-@themeOpposite" asp-area="" asp-controller="Auction"
+                                asp-action="New">New Auction</a>
                         </li>
                         @if (Context.Session.GetString("Theme") == "dark")
                         {
