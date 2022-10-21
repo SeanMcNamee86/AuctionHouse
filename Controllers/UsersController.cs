@@ -67,6 +67,8 @@ public class UsersController : Controller
         db.Users.Add(newUser);
         db.SaveChanges();
 
+        HttpContext.Session.SetString("First", newUser.FirstName);
+        HttpContext.Session.SetString("Last", newUser.LastName);
         HttpContext.Session.SetInt32("UUID", newUser.UserId);
         return RedirectToAction("Index", "Home");
     }
@@ -101,6 +103,8 @@ public class UsersController : Controller
             HttpContext.Session.SetString("Admin", "true");
         }
 
+        HttpContext.Session.SetString("First", dbUser.FirstName);
+        HttpContext.Session.SetString("Last", dbUser.LastName);
         HttpContext.Session.SetInt32("UUID", dbUser.UserId);
         return RedirectToAction("Index", "Home");
     }
@@ -119,7 +123,14 @@ public class UsersController : Controller
             .Include(v => v.Creator)
             .Include(v => v.Bids)
             .ThenInclude(b => b.User)
+            .OrderByDescending(b => b.UpdatedAt)
             .ToList();
+
+        foreach (Auction auction in allAuctions)
+        {
+            List<Bid> temp = auction.Bids.OrderByDescending(b => b.CreatedAt).ToList();
+            auction.Bids = temp;
+        }
 
         return View("Dashboard", allAuctions);
     }
@@ -127,7 +138,7 @@ public class UsersController : Controller
     [HttpGet("/users/{oneUserId}")]
     public IActionResult GetOneUser(int oneUserId)
     {
-        ViewBag.CreatorInfo = db.Users.FirstOrDefault(u => u.UserId == oneUserId);
+        ViewBag.User = db.Users.FirstOrDefault(u => u.UserId == oneUserId);
 
         List<Auction> allAuctions = db.Auctions
 

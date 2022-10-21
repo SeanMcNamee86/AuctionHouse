@@ -11,13 +11,10 @@
 @foreach (AuctionCategory ac in Model.CategoryAuctions)
 {
 
-    <div class="card bg-@theme shadow-lg-black p-5 d-flex flex-row align-items-center text-@themeOpposite mb-3">
+    <div class="card bg-@theme shadow-lg-@themeOpposite p-5 d-flex flex-row align-items-center text-@themeOpposite mb-3">
     <div>
         <a asp-controller="Auction" asp-action="GetOneAuction" asp-route-oneAuctionId="@ac.Auction.AuctionId">
-            <img class="homeImg border border-@themeOpposite border-1"
-                src="
-        https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
-                alt="Auction Img">
+            <img class="homeImg border border-@themeOpposite border-1" src="@ac.Auction.ImgURL" alt="Auction Img">
         </a>
 
     </div>
@@ -48,7 +45,7 @@
             <h6>Buy it Now: $@ac.Auction.BuyNow</h6>
         </div>
         <div>
-            <h6>Time Left: <span>@((ac.Auction.EndDate - DateTime.Now)
+            <h6>Time Left: <span>@(ac.Auction.TimeRemaining()
                     .ToString(@"d\ \d\a\y\(\s\)\ h\ \h\o\u\r\(\s\)\ mm\ \m\i\n\u\t\e\(\s\)")) Remaining</span></h6>
             <h6>End Time: @ac.Auction.StringDate()</h6>
         </div>

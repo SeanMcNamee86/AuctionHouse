@@ -36,9 +36,15 @@ public class HomeController : Controller
             HttpContext.Session.SetString("Theme", "light");
             HttpContext.Session.SetString("ThemeOpposite", "dark");
         }
+
+        List<Auction> allAuctions = db.Auctions
+        .Include(a => a.AuctionCategories)
+        .ThenInclude(ac => ac.Category)
+        .ToList();
+
         ViewBag.AllCategories = db.Categories.ToList();
 
-        return View("Index");
+        return View("Index", allAuctions);
     }
 
     [HttpPost("/dark")]

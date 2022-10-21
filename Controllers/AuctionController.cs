@@ -48,9 +48,14 @@ public class AuctionController : Controller
         newAuction.HighBid = newAuction.MinBid;
         if (newAuction.EndDate < DateTime.Now)
         {
-            ModelState.AddModelError("EndDate", "must be in the future");
+            ModelState.AddModelError("EndDate", "End Date must be in the future");
         }
-        
+
+        if ((catId == 0))
+        {
+            ModelState.AddModelError("Name", "Please select a Category");
+        }
+
         if (!ModelState.IsValid)
         {
             return New();
@@ -73,7 +78,7 @@ public class AuctionController : Controller
         db.SaveChanges();
         Console.WriteLine(newAuction.AuctionId);
 
-        return RedirectToAction("All");
+        return RedirectToAction("GetOneAuction", new { oneAuctionId = newAuction.AuctionId });
 
 
     }
@@ -88,7 +93,16 @@ public class AuctionController : Controller
             .Include(v => v.Creator)
             .Include(v => v.Bids)
             .ToList();
-        ViewBag.name = HttpContext.Session.GetString("Name");
+
+        foreach (Auction auction in allAuctions)
+        {
+            if (auction.TimeRemaining() == (DateTime.Now - DateTime.Now))
+            {
+                auction.isFinished = true;
+                db.Auctions.Update(auction);
+                db.SaveChanges();
+            }
+        }
 
         return View("All", allAuctions);
     }
@@ -102,7 +116,6 @@ public class AuctionController : Controller
             .Include(w => w.Bids)
             .ThenInclude(a => a.User)
             .FirstOrDefault(v => v.AuctionId == oneAuctionId);
-
 
         if (auction == null)
         {

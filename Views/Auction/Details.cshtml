@@ -8,10 +8,9 @@
 
 <div class="text-@themeOpposite d-flex align-items-center">
     <div class="p-5">
-        <img class="detailsImg"
-            src="https://cdn.shopify.com/s/files/1/0634/7833/3657/products/f835dfb3bf5e41a4b29acd2f310bf0849a5cbe3d_1500x.jpg?v=1666027524">
+        <img class="detailsImg shadow-lg-@themeOpposite" src="@Model.ImgURL">
     </div>
-    <div class="card bg-@theme shadow-lg-black p-5">
+    <div class="card w-50 bg-@theme shadow-lg-@themeOpposite p-3">
         <div class="card-body">
             <div class="card-title">
                 <h1>@Model.Name</h1>
@@ -33,23 +32,44 @@
             <div class="border-bottom card-text pb-4">
                 <h6>End Time: @Model.EndDate</h6>
             </div>
-            <div class="card-text d-flex justify-content-between align-items-center text-center pt-4">
-                <h4 class="col-6">Current Bid: $@Model.HighBid</h4>
-                <h4 class="col-6">Buy it Now: $@Model.BuyNow</h4>
-            </div>
-            <div class="pt-3">
-                <form asp-controller="Auction" asp-action="Bid" asp-route-auctionId="@Model.AuctionId"
+
+            @if (Context.Session.GetInt32("UUID") == Model.Creator.UserId)
+            {
+                <div class="card-text d-flex flex-column pt-4">
+                    <h4>Highest Bid: <span class="text-success">$@Model.HighBid</span></h4>
+                    @foreach (Bid bids in Model.Bids)
+                    {
+                        @if (bids.Amount == Model.HighBid)
+                        {
+                            <a asp-controller="Users" asp-action="GetOneUser" asp-route-oneuserId="@bids.User.UserId"
+                    class="text-@themeOpposite text-decoration-none">
+                                <h6>Placed by: @bids.User.FirstName @bids.User.LastName</h6>
+                            </a>
+                        }
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="card-text d-flex justify-content-between align-items-center text-center pt-4">
+                    <h5 class="col-6">Highest Bid: $@Model.HighBid</h5>
+                    <h5 class="col-6">Buy it Now: $@Model.BuyNow</h5>
+                </div>
+                <div class="pt-3">
+                    <form asp-controller="Auction" asp-action="Bid" asp-route-auctionId="@Model.AuctionId"
                     class="form-control bg-@theme text-@themeOpposite border-0 text-center">
-                    <div class="pb-1">
-                        <input class="form-control text-center bg-secondary text-@themeOpposite border-@themeOpposite"
-                            type="text" name="amount" placeholder="Bid Amount">
-                    </div>
-                    <div class="text-muted pb-3">
-                        <h6>Minimum bid: $@(Model.HighBid + (Model.HighBid * .025))</h6>
-                    </div>
-                    <button class="btn btn-lg btn-success w-50">Place Bid</button>
-                </form>
-            </div>
+                        <div class="pb-1 d-flex flex-column align-items-center">
+                            <input class="form-control w-75 text-start bg-@theme text-muted border-success border-2"
+                            type="text" name="amount" placeholder="Enter Bid Amount">
+                            <h6 class="text-muted fw-normal ms-1 mt-1 text-start w-75 pb-3">Minimum bid:
+                                $@(Model.HighBid +
+                            (Model.HighBid *
+                            .025))</h6>
+                        </div>
+                        <button class="btn btn-lg btn-success w-25">Place Bid</button>
+                    </form>
+                </div>
+            }
         </div>
     </div>
 </div>

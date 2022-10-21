@@ -6,18 +6,16 @@
 
 }
 
-<h1>Results for:</h1>
+<h1>All Auctions:</h1>
 
 @foreach (Auction a in Model)
 {
-
-    <div class="card bg-@theme shadow-lg-black p-5 d-flex flex-row align-items-center text-@themeOpposite mb-3">
+    @if (a.isFinished == false)
+    {
+        <div class="card bg-@theme shadow-lg-@themeOpposite p-5 d-flex flex-row align-items-center text-@themeOpposite mb-3">
     <div>
         <a asp-controller="Auction" asp-action="GetOneAuction" asp-route-oneAuctionId="@a.AuctionId">
-            <img class="homeImg border border-@themeOpposite border-1"
-                src="
-        https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
-                alt="Auction Img">
+            <img class="homeImg border border-@themeOpposite border-1" src="@a.ImgURL" alt="Auction Img">
         </a>
 
     </div>
@@ -37,7 +35,6 @@
                     <a asp-controller="Users" asp-action="GetOneUser" asp-route-oneuserId="@a.UserId"
                         class="text-@themeOpposite text-decoration-none">
                         Sold by: @a.Creator.FirstName @a.Creator.LastName
-
                     </a>
                 </h6>
             </a>
@@ -48,10 +45,11 @@
             <h6>Buy it Now: $@a.BuyNow</h6>
         </div>
         <div>
-            <h6>Time Left: <span>@((a.EndDate - DateTime.Now)
+            <h6>Time Left: <span>@(a.TimeRemaining()
                     .ToString(@"d\ \d\ h\ \h\ mm\ \m"))</span></h6>
             <h6>End Time: @a.StringDate()</h6>
         </div>
     </div>
 </div>
+    }
 }

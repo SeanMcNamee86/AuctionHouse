@@ -1,4 +1,12 @@
-﻿@{
+﻿@model List<Auction>
+
+@{
+    bool bool1 = false;
+    Random rand = new Random();
+    int seed = rand.Next(1, 4);
+}
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -8,12 +16,17 @@
 }
 
 <div class="d-flex flex-column justify-content-center align-items-center text-@themeOpposite">
+
     <div class="flex-row d-flex align-items-center w-100 justify-content-center">
+
         <div class="w-75">
+
             <form asp-controller="Category" asp-action="GetAuctionsByCategory" method="GET" class="rounded p-3 form-control bg-@theme text-@themeOpposite border-0 d-flex
                 justify-content-center align-items-center">
+
                 <div class="w-50">
-                    <select class="form-control text-start bg-@theme text-@themeOpposite border-@themeOpposite">
+                    <select name="oneCategoryId"
+                        class="form-control text-start bg-@theme text-@themeOpposite border-@themeOpposite">
                         <option value="" selected disabled hidden>Select a Category</option>
                         @foreach (Category c in ViewBag.AllCategories)
                         {
@@ -21,116 +34,85 @@
                         }
                     </select>
                 </div>
+
                 <div class="ms-3">
                     <button class="btn btn-primary">Search by Category</button>
                 </div>
+
             </form>
+
         </div>
+
     </div>
+
     <div>
-        <form asp-controller="Category" asp-action="GetAuctionsByCategory" method="GET">
+        <form asp-controller="Auction" asp-action="All" method="GET">
             <div class="w-100">
                 <button class="btn btn-primary">View All Auctions</button>
             </div>
         </form>
     </div>
-    <div>
-        <h1 class="text-@themeOpposite">Featured</h1>
-    </div>
 
-    <div class="container text-center my-3">
-        <h1 class="font-weight-light">Category 1</h1>
+
+    <div class="container text-start my-3">
+        <div class="ms-2">
+            <h1 class="font-weight-light">Featured Auctions:</h1>
+        </div>
         <div class="row mx-auto my-auto justify-content-center">
-            <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselOne" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <div class="col-md-3">
-                            <div class="card-img">
-                                <img src="https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-clubs-master/default/dw10cf8124/548C/548C_01.jpg?sw=300&sh=300&sm=fit&sfrm=png"
-                                    class="homeImg">
-                            </div>
-                            <div class="text-@themeOpposite m-2">$149.99</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card-img">
-                                <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
-                                    class="homeImg">
-                            </div>
-                            <div class="text-@themeOpposite m-2">$129.99</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item ">
-                        <div class="col-md-3">
-                            <div class="card-img">
-                                <img src="https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-clubs-master/default/dw10cf8124/548C/548C_01.jpg?sw=300&sh=300&sm=fit&sfrm=png"
-                                    class="homeImg">
-                            </div>
-                            <div class="text-@themeOpposite m-2">$149.99</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card-img">
-                                <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
-                                    class="homeImg">
-                            </div>
-                            <div class="text-@themeOpposite m-2">$129.99</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item ">
-                        <div class="col-md-3">
-                            <div class="card-img">
-                                <img src="https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-clubs-master/default/dw10cf8124/548C/548C_01.jpg?sw=300&sh=300&sm=fit&sfrm=png"
-                                    class="homeImg">
-                            </div>
-                            <div class="text-@themeOpposite m-2">$149.99</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card-img">
-                                <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
-                                    class="homeImg">
-                            </div>
-                            <div class="text-@themeOpposite m-2">$129.99</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item ">
-                        <div class="col-md-3">
-                            <div class="card-img">
-                                <img src="https://www.titleist.com/dw/image/v2/AAZW_PRD/on/demandware.static/-/Sites-titleist-clubs-master/default/dw10cf8124/548C/548C_01.jpg?sw=300&sh=300&sm=fit&sfrm=png"
-                                    class="homeImg">
-                            </div>
-                            <div class="text-@themeOpposite m-2">$149.99</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-md-3">
-                            <div class="card-img">
-                                <img src="https://golfdigest.sports.sndimg.com/content/dam/images/golfdigest/fullset/hotlist-2022/players-irons/CALLAWAY%20APEX%20PRO_PLAYERS%20IRONS_HERO.jpg.rend.hgtvcom.686.686.suffix/1638477422666.jpeg"
-                                    class="homeImg">
-                            </div>
-                            <div class="text-@themeOpposite m-2">$129.99</div>
-                        </div>
-                    </div>
+                    @foreach (Auction a in Model)
+                    {
+                        @foreach (AuctionCategory ac in a.AuctionCategories)
+                        {
+                            @if (ac.CategoryId == seed)
+                            {
+                                @if (bool1 == false)
+                                {
+                                    <div class="carousel-item active">
+                                        <div class="col-md-3">
+                                            <div class="card-img">
+                                                <a asp-controller="Auction" asp-action="GetOneAuction"
+                                    asp-route-oneAuctionId="@a.AuctionId"><img src="@a.ImgURL"
+                                        class="homeImg border border-@themeOpposite border-1"></a>
+                                            </div>
+                                            <div class="text-@themeOpposite mt-2">
+                                                <h6>Current Bid: $@a.HighBid</h6>
+                                                <h6>Time Left: <span>@(a.TimeRemaining().ToString(@"d\ \d\ h\ \h\ mm\ \m"))</span></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    { bool1 = true; }
+                                }
+                                else
+                                {
+                                    <div class="carousel-item">
+                                        <div class="col-md-3">
+                                            <div class="card-img">
+                                                <a asp-controller="Auction" asp-action="GetOneAuction"
+                                    asp-route-oneAuctionId="@a.AuctionId"><img src="@a.ImgURL"
+                                        class="homeImg border border-@themeOpposite border-1"></a>
+                                            </div>
+                                            <div class="text-@themeOpposite mt-2">
+                                                <h6>Current Bid: $@a.HighBid</h6>
+                                                <h6>Time Left: <span>@(a.TimeRemaining().ToString(@"d\ \d\ h\ \h\ mm\ \m"))</span></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+                    }
                 </div>
-                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button"
+                <a class="carousel-control-prev bg-transparent w-aut lArr" href="#carouselOne" role="button"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
-                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button"
+                <a class="carousel-control-next bg-transparent w-aut rArr" href="#carouselOne" role="button"
                     data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
         </div>
-    </div>
-    <div>
-        <h1 class="text-@themeOpposite">Category 2</h1>
-    </div>
-    <div>
-        <h1 class="text-@themeOpposite">Category 3</h1>
     </div>
 </div>

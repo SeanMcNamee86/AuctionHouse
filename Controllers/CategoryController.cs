@@ -44,7 +44,7 @@ public class CategoryController : Controller
             return RedirectToAction("Index", "Users");
         }
 
-        if (!ModelState.IsValid )
+        if (!ModelState.IsValid)
         {
             return New();
         }
@@ -80,12 +80,8 @@ public class CategoryController : Controller
     [HttpGet("/categories/search")]
     public IActionResult GetAuctionsByCategory(int oneCategoryId)
     {
-        if (!loggedIn || HttpContext.Session.GetString("Admin") != "true")
-        {
-            return RedirectToAction("Index", "Users");
-        }
         Category? auctionsByCat = db.Categories.Include(c => c.CategoryAuctions).ThenInclude(ca => ca.Auction).FirstOrDefault(c => c.CategoryId == oneCategoryId);
-        
+
         if (auctionsByCat == null)
         {
             return View("Auction");
