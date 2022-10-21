@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionHouse.Migrations
 {
     [DbContext(typeof(AuctionHouseContext))]
-    [Migration("20221020212217_FirstMigration")]
+    [Migration("20221020203328_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

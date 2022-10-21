@@ -8,37 +8,81 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AuctionHouse
 build_property.RootNamespace = AuctionHouse
-build_property.ProjectDir = C:\Users\coole\Desktop\Dojo_Folder\C-sharp\AuctionHouse\
+build_property.ProjectDir = C:\Users\coole\Documents\GitHub\AuctionHouse\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\coole\Desktop\Dojo_Folder\C-sharp\AuctionHouse
+build_property.MSBuildProjectDirectory = C:\Users\coole\Documents\GitHub\AuctionHouse
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/coole/Desktop/Dojo_Folder/C-sharp/AuctionHouse/Views/Home/Index.cshtml]
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Auction/All.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvblxBbGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Auction/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvblxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Auction/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvblxOZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Categories/AllAuctions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xBbGxBdWN0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Category/AllAuctions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQWxsQXVjdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Category/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/coole/Desktop/Dojo_Folder/C-sharp/AuctionHouse/Views/Home/Privacy.cshtml]
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/coole/Desktop/Dojo_Folder/C-sharp/AuctionHouse/Views/Shared/Error.cshtml]
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/coole/Desktop/Dojo_Folder/C-sharp/AuctionHouse/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/coole/Desktop/Dojo_Folder/C-sharp/AuctionHouse/Views/_ViewImports.cshtml]
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Users/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Users/OneUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcT25lVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Users/_LoginUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcX0xvZ2luVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Users/_RegisterUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcX1JlZ2lzdGVyVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/coole/Desktop/Dojo_Folder/C-sharp/AuctionHouse/Views/_ViewStart.cshtml]
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/coole/Desktop/Dojo_Folder/C-sharp/AuctionHouse/Views/Shared/_Layout.cshtml]
+[C:/Users/coole/Documents/GitHub/AuctionHouse/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-jxziy3zowu

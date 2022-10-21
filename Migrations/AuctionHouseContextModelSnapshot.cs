@@ -25,8 +25,8 @@ namespace AuctionHouse.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("BuyNow")
-                        .HasColumnType("int");
+                    b.Property<float>("BuyNow")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -38,11 +38,14 @@ namespace AuctionHouse.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("HighBid")
-                        .HasColumnType("int");
+                    b.Property<float>("HighBid")
+                        .HasColumnType("float");
 
-                    b.Property<int>("MinBid")
-                        .HasColumnType("int");
+                    b.Property<string>("ImgURL")
+                        .HasColumnType("longtext");
+
+                    b.Property<float>("MinBid")
+                        .HasColumnType("float");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -53,6 +56,9 @@ namespace AuctionHouse.Migrations
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("isFinished")
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("AuctionId");
 
@@ -94,8 +100,8 @@ namespace AuctionHouse.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
+                    b.Property<float>("Amount")
+                        .HasColumnType("float");
 
                     b.Property<int>("AuctionId")
                         .HasColumnType("int");
@@ -169,6 +175,9 @@ namespace AuctionHouse.Migrations
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("isSuper")
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("UserId");
 
