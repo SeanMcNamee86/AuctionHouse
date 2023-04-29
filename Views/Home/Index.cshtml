@@ -58,7 +58,7 @@
         <div class="ms-2">
             <h1 class="font-weight-light">Featured Auctions:</h1>
         </div>
-        <div class="row mx-auto my-auto justify-content-center">
+        <div class="row mx-auto my-auto d-flex align-items-center">
             <div id="carouselOne" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                     @foreach (Auction a in Model)
@@ -71,10 +71,10 @@
                                 {
                                     <div class="carousel-item active">
                                         <div class="col-md-3">
-                                            <div class="card-img">
+                                            <div class="card-img setCarouselHeight">
                                                 <a asp-controller="Auction" asp-action="GetOneAuction"
-                                    asp-route-oneAuctionId="@a.AuctionId"><img src="@a.ImgURL"
-                                        class="homeImg border border-@themeOpposite border-1"></a>
+                                                    asp-route-oneAuctionId="@a.AuctionId"><img src="@a.ImgURL"
+                                                        class="homeImg border border-@themeOpposite border-1"></a>
                                             </div>
                                             <div class="text-@themeOpposite mt-2">
                                                 <h6>Current Bid: $@a.HighBid</h6>
@@ -88,10 +88,10 @@
                                 {
                                     <div class="carousel-item">
                                         <div class="col-md-3">
-                                            <div class="card-img">
+                                            <div class="card-img setCarouselHeight">
                                                 <a asp-controller="Auction" asp-action="GetOneAuction"
-                                    asp-route-oneAuctionId="@a.AuctionId"><img src="@a.ImgURL"
-                                        class="homeImg border border-@themeOpposite border-1"></a>
+                                                    asp-route-oneAuctionId="@a.AuctionId"><img src="@a.ImgURL"
+                                                        class="homeImg border border-@themeOpposite border-1"></a>
                                             </div>
                                             <div class="text-@themeOpposite mt-2">
                                                 <h6>Current Bid: $@a.HighBid</h6>

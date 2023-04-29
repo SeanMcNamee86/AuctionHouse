@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\coole\\Desktop\\Dojo_Folder\\C-sharp\\AuctionHouse\\AuctionHouse.csproj": {}
+    "/Users/kylemcnally/Documents/GitHub/AuctionHouse/AuctionHouse.csproj": {}
   },
   "projects": {
-    "C:\\Users\\coole\\Desktop\\Dojo_Folder\\C-sharp\\AuctionHouse\\AuctionHouse.csproj": {
+    "/Users/kylemcnally/Documents/GitHub/AuctionHouse/AuctionHouse.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\coole\\Desktop\\Dojo_Folder\\C-sharp\\AuctionHouse\\AuctionHouse.csproj",
+        "projectUniqueName": "/Users/kylemcnally/Documents/GitHub/AuctionHouse/AuctionHouse.csproj",
         "projectName": "AuctionHouse",
-        "projectPath": "C:\\Users\\coole\\Desktop\\Dojo_Folder\\C-sharp\\AuctionHouse\\AuctionHouse.csproj",
-        "packagesPath": "C:\\Users\\coole\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\coole\\Desktop\\Dojo_Folder\\C-sharp\\AuctionHouse\\obj\\",
+        "projectPath": "/Users/kylemcnally/Documents/GitHub/AuctionHouse/AuctionHouse.csproj",
+        "packagesPath": "/Users/kylemcnally/.nuget/packages/",
+        "outputPath": "/Users/kylemcnally/Documents/GitHub/AuctionHouse/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\coole\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/kylemcnally/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -55,8 +55,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -68,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }

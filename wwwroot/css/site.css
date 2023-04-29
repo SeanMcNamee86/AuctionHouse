@@ -309,7 +309,8 @@ body {
 }
 
 .homeImg {
-  height: 200px;
+  max-height: 200px;
+  max-width: 275px;
 }
 
 /* Carousel */
@@ -367,4 +368,10 @@ body {
 
 .lArr {
   left: -100px;
+}
+
+.setCarouselHeight {
+  height: 200px !important;
+  justify-content: center;
+  align-items: center;
 }
