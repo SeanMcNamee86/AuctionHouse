@@ -18,7 +18,7 @@ Creating an Auction:
 
 <img width="1728" alt="CreateAuction" src="https://user-images.githubusercontent.com/109179389/235518598-a99ce611-78e7-4136-a895-f2e7bc0f6544.png">
 
-More Dark Mode:
+<p style="text-align: center;">More Dark Mode:</p>
 
-<img width="1728" alt="RegistrationDarkMode" src="https://user-images.githubusercontent.com/109179389/235518657-74acf5e0-8e48-4a41-8e39-b047dbe9b58e.png">
+<img style="text-align: center;" width="1728" alt="RegistrationDarkMode" src="https://user-images.githubusercontent.com/109179389/235518657-74acf5e0-8e48-4a41-8e39-b047dbe9b58e.png">
 <img width="1728" alt="OneAuctionDarkMode" src="https://user-images.githubusercontent.com/109179389/235518675-af288d8f-d831-4e98-9cb7-f46212e5152b.png">
