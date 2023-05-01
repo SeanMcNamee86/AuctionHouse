@@ -9,7 +9,8 @@ Welcome to Auction House and thank you for taking the time to visit our project!
 - Used RAZOR to conditionally render elements and display server data depending on the user in session.
 - Validated user login and registration via Entity Framework Core First Data Annotations, utilized Cookies to conditionally render content, and included an administrative user class to help with scalability and user support.
 
-Login/Registration:
+<p style="text-align: center;">Login/Registration</p>
+
 
 ![ezgif com-video-to-gif (2)](https://user-images.githubusercontent.com/109179389/235516712-34c1f725-0b21-4120-b058-6074f0612031.gif)
 
