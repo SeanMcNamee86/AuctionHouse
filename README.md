@@ -2,7 +2,7 @@ Welcome to Auction House and thank you for taking the time to visit our project!
 
 
 -Created and linked multiple one-to-many and many-to-many models using MySQL, enabling individual users to create, view, and bid on live auctions. Designed ASP.NET Core server to seamlessly locate and modify expired auctions.
--Employed Javascript to improve front-end functionality, including live countdown timers for auctions. 
+-Employed Javascript to improve front-end functionality, including live countdown timers for auctions.
 -Utilized Entity Framework to apply RESTful routing architecture in order to create intuitive navigability.
 -Used RAZOR to conditionally render elements and display server data depending on the user in session.
 -Implemented a toggleable dark mode via custom CSS and Bootstrap for an enhanced user experience.
