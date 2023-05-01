@@ -1,12 +1,13 @@
 Welcome to Auction House and thank you for taking the time to visit our project! We built this app during a project week at Coding Dojo. Auction House is an online auction app built using C#/.NET to facilitate the buying and selling of products online. Below is a quick description of features as well as some animated demos and screenshots.
 
 
--Created and linked multiple one-to-many and many-to-many models using MySQL, enabling individual users to create, view, and bid on live auctions. Designed ASP.NET Core server to seamlessly locate and modify expired auctions.
--Employed Javascript to improve front-end functionality, including live countdown timers for auctions.
--Utilized Entity Framework to apply RESTful routing architecture in order to create intuitive navigability.
--Used RAZOR to conditionally render elements and display server data depending on the user in session.
--Implemented a toggleable dark mode via custom CSS and Bootstrap for an enhanced user experience.
--Validated user login and registration via Entity Framework Core First Data Annotations, utilized Cookies to conditionally render content, and included an administrative user class to help with scalability and user support.
+
+- Created and linked multiple one-to-many and many-to-many models using MySQL, enabling individual users to create, view, and bid on live auctions. Designed ASP.NET Core server to seamlessly locate and modify expired auctions.
+- Employed Javascript to improve front-end functionality, including live countdown timers for auctions. 
+- Utilized Entity Framework to apply RESTful routing architecture in order to create intuitive navigability.
+- Implemented a toggleable dark mode via custom CSS and Bootstrap for an enhanced user experience.
+- Used RAZOR to conditionally render elements and display server data depending on the user in session.
+- Validated user login and registration via Entity Framework Core First Data Annotations, utilized Cookies to conditionally render content, and included an administrative user class to help with scalability and user support.
 
 Login/Registration:
 
